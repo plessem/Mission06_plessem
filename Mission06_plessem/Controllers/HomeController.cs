@@ -31,29 +31,26 @@ namespace Mission06_plessem.Controllers
         public IActionResult MovieForm ()
         {
             ViewBag.Categories = _MovieContext.Categories.ToList();
-            return View();
+            return View(new ApplicationResponse());
         }
 
         [HttpPost]
         public IActionResult MovieForm(ApplicationResponse ar)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    //Saving changes to database
-            //    _MovieContext.Add(ar);
-            //    _MovieContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                //Saving changes to database
+                _MovieContext.Add(ar);
+                _MovieContext.SaveChanges();
 
-            //    return View("Confirmation", ar);
-            //}
-            ////if invalid
-            //else
-            //{
-            //    ViewBag.Categories = _MovieContext.Categories.ToList();
-            //    return View(ar);
-            //}
-            _MovieContext.Add(ar);
-            _MovieContext.SaveChanges();
-            return View("Confirmation", ar);
+                return View("Confirmation", ar);
+            }
+            //if invalid
+            else
+            {
+                ViewBag.Categories = _MovieContext.Categories.ToList();
+                return View(ar);
+            }
 
         }
 
