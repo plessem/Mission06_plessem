@@ -13,17 +13,17 @@ namespace Mission06_plessem.Models
         public int MovieId { get; set; }
 
         //Build foreign key relationship 
-        [Required]
+        // [Required]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You need to enter a movie title.")]
         public string Title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "You need to enter a year.")]
         public short Year { get; set; }
-        [Required]
+        [Required(ErrorMessage = "You need to enter a director.")]
         public string Director { get; set; }
-        [Required]
+        [Required(ErrorMessage = "You need to enter a movie rating.")]
         public string Rating { get; set; }
         public string Edited { get; set; }
         public string LentTo { get; set; }

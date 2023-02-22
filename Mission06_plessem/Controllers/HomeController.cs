@@ -37,11 +37,22 @@ namespace Mission06_plessem.Controllers
         [HttpPost]
         public IActionResult MovieForm(ApplicationResponse ar)
         {
-            //Saving changes to database
-            _MovieContext.Add(ar);
-            _MovieContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                //Saving changes to database
+                _MovieContext.Add(ar);
+                _MovieContext.SaveChanges();
 
-            return View("Confirmation", ar);
+                return View("Confirmation", ar);
+            }
+            //if invalid
+            else
+            {
+                ViewBag.Categories = _MovieContext.Categories.ToList();
+                return View(ar);
+            }
+
+
         }
 
         public IActionResult MyPodcasts()
@@ -58,12 +69,21 @@ namespace Mission06_plessem.Controllers
         }
 
         //creating edit and delete
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Categories = _MovieContext.Categories.ToList();
             var application = _MovieContext.Responses.Single(x=> x.MovieId == id);
 
             return View("MovieForm", application);
+        }
+
+        [HttpPost]
+        public IActionResult Edit (ApplicationResponse blah)
+        {
+            _MovieContext.Update(blah);
+            _MovieContext.SaveChanges();
+            return RedirectToAction("List");
         }
 
         public IActionResult Delete()
