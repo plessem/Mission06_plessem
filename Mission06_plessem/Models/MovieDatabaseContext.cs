@@ -22,7 +22,7 @@ namespace Mission06_plessem.Models
                 new ApplicationResponse
                 {
                     MovieId = 1,
-                    Category = "Drama",
+                    CategoryId = 1,
                     Title = "Emma",
                     Year = 2020,
                     Director = "Autumn de Wilde", 
@@ -31,7 +31,7 @@ namespace Mission06_plessem.Models
                 new ApplicationResponse
                 {
                     MovieId = 2,
-                    Category = "Drama",
+                    CategoryId = 1,
                     Title = "Pride and Prejudice",
                     Year = 2005,
                     Director = "Joe Wright",
@@ -40,7 +40,7 @@ namespace Mission06_plessem.Models
                 new ApplicationResponse
                 {
                     MovieId = 3,
-                    Category = "Family",
+                    CategoryId = 2,
                     Title = "Tangled",
                     Year = 2010,
                     Director = "Nathan Greno",

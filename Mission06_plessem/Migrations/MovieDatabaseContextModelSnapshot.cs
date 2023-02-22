@@ -21,9 +21,8 @@ namespace Mission06_plessem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -52,13 +51,15 @@ namespace Mission06_plessem.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Responses");
 
                     b.HasData(
                         new
                         {
                             MovieId = 1,
-                            Category = "Drama",
+                            CategoryId = 1,
                             Director = "Autumn de Wilde",
                             Rating = "PG",
                             Title = "Emma",
@@ -67,7 +68,7 @@ namespace Mission06_plessem.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Drama",
+                            CategoryId = 1,
                             Director = "Joe Wright",
                             Rating = "PG",
                             Title = "Pride and Prejudice",
@@ -76,12 +77,35 @@ namespace Mission06_plessem.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Family",
+                            CategoryId = 2,
                             Director = "Nathan Greno",
                             Rating = "PG",
                             Title = "Tangled",
                             Year = (short)2010
                         });
+                });
+
+            modelBuilder.Entity("Mission06_plessem.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("Mission06_plessem.Models.ApplicationResponse", b =>
+                {
+                    b.HasOne("Mission06_plessem.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
