@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<br /><br />
+<h2>Are you sure you want to delete?</h2>
+<br /><br />
+
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <a asp-controller="Home" asp-action="List" class="btn btn-primary">Cancel</a>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
