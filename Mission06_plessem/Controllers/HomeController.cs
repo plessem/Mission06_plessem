@@ -11,13 +11,13 @@ namespace Mission06_plessem.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
         private MovieDatabaseContext _MovieContext { get; set; }
 
         //constructor
-        public HomeController(ILogger<HomeController> logger, MovieDatabaseContext someName)
+        public HomeController(MovieDatabaseContext someName)
         {
-            _logger = logger;
+           
             _MovieContext = someName;
         }
 
@@ -47,10 +47,16 @@ namespace Mission06_plessem.Controllers
             return View();
         }
 
+        public IActionResult List()
+        {
+            var movies = _MovieContext.Responses.ToList();
+            return View(movies);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }
