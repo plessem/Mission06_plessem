@@ -37,8 +37,8 @@
                     <td>@x.Notes</td>
 
                     <!--edit and delete buttons-->
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a></td>
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId" class="btn-link">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId" class="btn-link">Delete</a></td>
                 </tr>
             }
     </tbody>
