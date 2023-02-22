@@ -59,7 +59,7 @@ namespace Mission06_plessem.Migrations
                         new
                         {
                             MovieId = 1,
-                            CategoryId = 1,
+                            CategoryId = 3,
                             Director = "Autumn de Wilde",
                             Rating = "PG",
                             Title = "Emma",
@@ -68,7 +68,7 @@ namespace Mission06_plessem.Migrations
                         new
                         {
                             MovieId = 2,
-                            CategoryId = 1,
+                            CategoryId = 3,
                             Director = "Joe Wright",
                             Rating = "PG",
                             Title = "Pride and Prejudice",
@@ -77,7 +77,7 @@ namespace Mission06_plessem.Migrations
                         new
                         {
                             MovieId = 3,
-                            CategoryId = 2,
+                            CategoryId = 4,
                             Director = "Nathan Greno",
                             Rating = "PG",
                             Title = "Tangled",
@@ -96,7 +96,49 @@ namespace Mission06_plessem.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "Horror/Suspense"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            CategoryName = "Miscellaneous"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            CategoryName = "Television"
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            CategoryName = "VHS"
+                        });
                 });
 
             modelBuilder.Entity("Mission06_plessem.Models.ApplicationResponse", b =>

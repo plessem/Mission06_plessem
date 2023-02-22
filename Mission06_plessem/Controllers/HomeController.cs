@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission06_plessem.Models;
 using System;
@@ -29,6 +30,7 @@ namespace Mission06_plessem.Controllers
         [HttpGet]
         public IActionResult MovieForm ()
         {
+            ViewBag.Categories = _MovieContext.Categories.ToList();
             return View();
         }
 
@@ -49,7 +51,9 @@ namespace Mission06_plessem.Controllers
 
         public IActionResult List()
         {
-            var movies = _MovieContext.Responses.ToList();
+            var movies = _MovieContext.Responses
+                .Include(x=> x.Category)
+                .ToList();
             return View(movies);
         }
 

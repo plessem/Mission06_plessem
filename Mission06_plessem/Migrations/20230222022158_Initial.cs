@@ -7,7 +7,7 @@ namespace Mission06_plessem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(nullable: false)
@@ -16,7 +16,7 @@ namespace Mission06_plessem.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.CategoryId);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -38,27 +38,67 @@ namespace Mission06_plessem.Migrations
                 {
                     table.PrimaryKey("PK_Responses", x => x.MovieId);
                     table.ForeignKey(
-                        name: "FK_Responses_Category_CategoryId",
+                        name: "FK_Responses_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Responses",
-                columns: new[] { "MovieId", "CategoryId", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
-                values: new object[] { 1, 1, "Autumn de Wilde", null, null, null, "PG", "Emma", (short)2020 });
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 1, "Action/Adventure" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 2, "Comedy" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 3, "Drama" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 4, "Family" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 5, "Horror/Suspense" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 6, "Miscellaneous" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 7, "Television" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[] { 8, "VHS" });
 
             migrationBuilder.InsertData(
                 table: "Responses",
                 columns: new[] { "MovieId", "CategoryId", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
-                values: new object[] { 2, 1, "Joe Wright", null, null, null, "PG", "Pride and Prejudice", (short)2005 });
+                values: new object[] { 1, 3, "Autumn de Wilde", null, null, null, "PG", "Emma", (short)2020 });
 
             migrationBuilder.InsertData(
                 table: "Responses",
                 columns: new[] { "MovieId", "CategoryId", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
-                values: new object[] { 3, 2, "Nathan Greno", null, null, null, "PG", "Tangled", (short)2010 });
+                values: new object[] { 2, 3, "Joe Wright", null, null, null, "PG", "Pride and Prejudice", (short)2005 });
+
+            migrationBuilder.InsertData(
+                table: "Responses",
+                columns: new[] { "MovieId", "CategoryId", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
+                values: new object[] { 3, 4, "Nathan Greno", null, null, null, "PG", "Tangled", (short)2010 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Responses_CategoryId",
@@ -72,7 +112,7 @@ namespace Mission06_plessem.Migrations
                 name: "Responses");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
         }
     }
 }
