@@ -13,7 +13,7 @@ namespace Mission06_plessem.Models
         public int MovieId { get; set; }
 
         //Build foreign key relationship 
-        // [Required]
+        [Required(ErrorMessage ="You need to select a movie category.")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
