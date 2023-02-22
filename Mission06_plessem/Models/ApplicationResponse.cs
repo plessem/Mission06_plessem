@@ -11,8 +11,12 @@ namespace Mission06_plessem.Models
         [Key]
         [Required]
         public int MovieId { get; set; }
+
+        //Build foreign key relationship 
         [Required]
-        public string Category { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
         [Required]
         public string Title { get; set; }
         [Required]
