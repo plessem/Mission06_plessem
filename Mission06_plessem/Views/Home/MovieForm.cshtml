@@ -13,6 +13,7 @@
 <div>
     <!--Form to add in movies to the database-->
     <form method="post">
+        <input type="hidden" asp-for="MovieId" />
         <div asp-validation-summary="All"></div>
         <label asp-for="CategoryId">Category:</label>
         <select asp-for="CategoryId">
