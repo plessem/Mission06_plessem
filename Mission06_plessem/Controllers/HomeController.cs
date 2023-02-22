@@ -79,17 +79,28 @@ namespace Mission06_plessem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit (ApplicationResponse blah)
+        public IActionResult Edit (ApplicationResponse ar)
         {
-            _MovieContext.Update(blah);
+            _MovieContext.Update(ar);
             _MovieContext.SaveChanges();
             return RedirectToAction("List");
         }
 
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            return View();
+            var application = _MovieContext.Responses.Single(x => x.MovieId == id);
+            return View(application);
         }
+
+        [HttpPost]
+        public IActionResult Delete(ApplicationResponse ar)
+        {
+            _MovieContext.Responses.Remove(ar);
+            _MovieContext.SaveChanges();
+            return RedirectToAction("List");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
