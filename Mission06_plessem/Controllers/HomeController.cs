@@ -57,6 +57,20 @@ namespace Mission06_plessem.Controllers
             return View(movies);
         }
 
+        //creating edit and delete
+        public IActionResult Edit()
+        {
+            ViewBag.Categories = _MovieContext.Categories.ToList();
+            //var application = _MovieContext.Responses.Single();
+
+            return View("MovieForm");
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
