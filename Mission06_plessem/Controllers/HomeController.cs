@@ -58,12 +58,12 @@ namespace Mission06_plessem.Controllers
         }
 
         //creating edit and delete
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
             ViewBag.Categories = _MovieContext.Categories.ToList();
-            //var application = _MovieContext.Responses.Single();
+            var application = _MovieContext.Responses.Single(x=> x.MovieId == id);
 
-            return View("MovieForm");
+            return View("MovieForm", application);
         }
 
         public IActionResult Delete()
